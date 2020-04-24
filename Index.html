@@ -3,7 +3,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
     <header>
@@ -108,21 +110,34 @@
      
       <form>
         <h1>Faça uma simulação</h1>
-        <div class="form-row align-items-center">
-            <div class="col-sm-3 my-1">
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <div class="input-group-text">R$</div>
+
+        <p>
+            <div class="col-auto my-1">
+                <div class="form-row align-items-center">
+                    <div class="col-sm-3 my-1">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text">R$</div>
+                      </div>
+                      <input type="text" class="form-control" id="valorMensal" placeholder="Valor Mensal">
+                    </div>
+                </div>
+                <button type="button" id="btnEnviar" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" onclick="calcularAliquota()" class="btn btn-primary">Calcular Aliquota!</button>
               </div>
-              <input type="text" class="form-control" id="valorMensal" placeholder="Valor Mensal">
-            </div>
-          </div>          
-          <div class="col-auto my-1">
-            <button id="btnEnviar" onclick="calcularAliquota()" class="btn btn-primary">Calcular Aliquota!</button>
+                  </div>          
+                 
+                
+          </p>
+          <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+                <h1 id="resultado">R$</h1>
+             </div>
           </div>
-        </div>
+
+
+        
       </form>
-    <h1 id="resultado"></h1>
+    
 </div>
 <script>
     function calcularAliquota(){
@@ -130,8 +145,7 @@
     var aliquota = (parseInt(document.getElementById("valorMensal").value)) * 12;
     var div = document.getElementById("resultado");           
      
-    if(aliquota <= 180000){
-        alert("4,00%")        
+    if(aliquota <= 180000){      
         valorFinal = aliquota * (0.04);
         div.innerText = valorFinal;
     }
