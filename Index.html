@@ -8,7 +8,7 @@
 <body>
     <input type="text" id="valorMensal">    
     <button id="btnEnviar" onclick="calcularAliquota()">Calcular Aliquota!</button>
-    <h1 id="resultado"></h1>
+    <h3 id="resultado"></h3>
 
 <script>
     function calcularAliquota(){
@@ -22,9 +22,10 @@
         div.innerText = valorFinal;
     }
     else if (aliquota > 180000 && aliquota <= 360000){
-        alert("7,30%")
-        valorFinal = aliquota * (0.073);
-        div.innerText = valorFinal;
+        div.innerText = "Encontra-se na 4° faixa \n"
+        valorFinal = (aliquota * 0.073) - 5940;
+        div.innerText += "\n  Faturamento anual: " + (aliquota/12) + " X 12 = " + aliquota;
+        div.innerText += "\n Aliquota: " + aliquota + " X 7,30% - " + 5940 + " = R$ " + valorFinal;   
     }
     else if (aliquota > 360000 && aliquota <= 720000){
         alert("9,50%")
