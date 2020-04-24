@@ -6,6 +6,132 @@
 
 </head>
 <body>
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand" href="#">Calculadora de Restituição</a>
+      </nav>
+      <div class="container">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Receita Bruta em 12 Meses (em R$)</th>
+            <th scope="col">Alíquota</th>
+            <th scope="col">Valor a Deduzir (em R$)</th>
+            <th scope="col">IRPJ</th>
+            <th scope="col">CSLL</th>
+            <th scope="col">Cofins</th>
+            <th scope="col">PIS/Pasep</th>
+            <th scope="col">CPP</th>    
+            <th scope="col">ICMS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Até 180.000,00</td>
+            <td>4,00%</td>
+            <td>–</td>
+            <td>5,50%</td>
+            <td>3,50%</td>
+            <td>12,74%</td>
+            <td>2,76%</td>
+            <td>41,50%</td>
+            <td>34,00%</td>
+        </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>De 180.000,01 a 360.000,00</td>
+            <td>7,30%</td>
+            <td>5.940,00</td>
+            <td>5,50%</td>
+            <td>3,50%</td>
+            <td>12,74%</td>
+            <td>2,76%</td>
+            <td>41,50%</td>
+            <td>34,00%</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>De 360.000,01 a 720.000,00</td>
+            <td>9,50%</td>
+            <td>13.860,00</td>
+            <td>5,50%</td>
+            <td>3,50%</td>
+            <td>12,74%</td>
+            <td>2,76%</td>
+            <td>42,00%</td>
+            <td>33,50%</td>
+          </tr>
+          <tr>
+            <th scope="row">4</th>
+            <td>De 720.000,01 a 1.800.000,00</td>
+            <td>10,70%</td>
+            <td>22.500,00</td>
+            <td>5,50%</td>
+            <td>3,50%</td>
+            <td>12,74%</td>
+            <td>2,76%</td>
+            <td>42,00%</td>
+            <td>33,50%</td>
+          </tr>
+          <tr>
+            <th scope="row">5</th>
+            <td>De 1.800.000,01 a 3.600.000,00</td>
+            <td>14,30%</td>
+            <td>87.300,00</td>
+            <td>5,50%</td>
+            <td>3,50%</td>
+            <td>12,74%</td>
+            <td>2,76%</td>
+            <td>42,00%</td>
+            <td>33,50%</td>
+          </tr>
+          <tr>
+            <th scope="row">6</th>
+            <td>De 3.600.000,01 a 4.800.000,00</td>
+            <td>19,00%</td>
+            <td>378.000,00</td>
+            <td>13,50%</td>
+            <td>10,00%</td>
+            <td>28,27%</td>
+            <td>2,76%</td>
+            <td>42,00%</td>
+            <td>33,50%</td>
+          </tr>
+        
+        </tbody>
+      </table>
+    </div>
+      
+      <form>
+        <div class="form-row align-items-center">
+          <div class="col-sm-3 my-1">
+            <label class="sr-only" for="inlineFormInputName">Name</label>
+            <input type="text" class="form-control" id="inlineFormInputName" placeholder="Jane Doe">
+          </div>
+          <div class="col-sm-3 my-1">
+            <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text">@</div>
+              </div>
+              <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="Username">
+            </div>
+          </div>
+          <div class="col-auto my-1">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="autoSizingCheck2">
+              <label class="form-check-label" for="autoSizingCheck2">
+                Remember me
+              </label>
+            </div>
+          </div>
+          <div class="col-auto my-1">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </div>
+      </form>
+
     <input type="text" id="valorMensal">    
     <button id="btnEnviar" onclick="calcularAliquota()">Calcular Aliquota!</button>
     <h1 id="resultado"></h1>
