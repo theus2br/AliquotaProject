@@ -1,54 +1,20 @@
-<html lang="en"><head>
+<html>
+    <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
+    <script type="text/javascript" src="script.js"></script>
 </head>
 <body>
-    <input type="text" id="valorMensal">    
+    <h1>INFORME SEU FATURAMENTO MENSAL?</h1>
+    <input type="text" id="valorMensal" placeholder="DIGITE AQUI">
+    <h1>QUAL É O SEU SEGMENTO?</h1>
+    <select>
+        <option>Adega</option>
+        <option>Outros</option>
+    </select>    
     <button id="btnEnviar" onclick="calcularAliquota()">Calcular Aliquota!</button>
     <h3 id="resultado"></h3>
-
-<script>
-    function calcularAliquota(){
-    //var ali = document.getElementById('valorMensal').innerHTML
-    var aliquota = (parseInt(document.getElementById("valorMensal").value)) * 12;
-    var div = document.getElementById("resultado");           
-     
-    if(aliquota <= 180000){
-        alert("4,00%")        
-        valorFinal = aliquota * (0.04);
-        div.innerText = valorFinal;
-    }
-    else if (aliquota > 180000 && aliquota <= 360000){
-        div.innerText = "Encontra-se na 4° faixa \n"
-        valorFinal = (aliquota * 0.073) - 5940;
-        div.innerText += "\n  Faturamento anual: " + (aliquota/12) + " X 12 = " + aliquota;
-        div.innerText += "\n Aliquota: " + aliquota + " X 7,30% - " + 5940 + " = R$ " + valorFinal;   
-    }
-    else if (aliquota > 360000 && aliquota <= 720000){
-        alert("9,50%")
-        valorFinal = aliquota * (0.095);
-        div.innerText = valorFinal;
-    }
-    else if (aliquota > 720000 && aliquota <= 1800000){
-        alert("10,70%")
-        valorFinal = aliquota * (0.107);
-        div.innerText = valorFinal;
-    }
-    else if (aliquota > 1800000 && aliquota < 3600000){
-        alert("14,30%")
-        valorFinal = aliquota * (0.143);
-        div.innerText = valorFinal;
-    }
-    else if (aliquota > 3600000 && aliquota < 4800000){
-        alert("19,00%")
-        valorFinal = aliquota * (0.19);
-        div.innerText = valorFinal;
-    }else{
-        alert("Excedeu o limite!")
-    }
-    }
-</script>
-</body></html>
+</body>
+</html>
