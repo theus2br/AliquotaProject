@@ -5,16 +5,26 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script type="text/javascript" src="script.js"></script>
+    <style>
+        #btnEnviar{
+            margin-left: 50px;
+        }
+    </style>
 </head>
 <body>
-    <h1>INFORME SEU FATURAMENTO MENSAL?</h1>
-    <input type="text" id="valorMensal" placeholder="DIGITE AQUI">
-    <h1>QUAL É O SEU SEGMENTO?</h1>
-    <select>
+    
+    <form class="mx-auto" style="width: 600px;">
+    <p><h3>INFORME SEU FATURAMENTO MENSAL?</h3>
+    <input type="text" id="valorMensal" placeholder="DIGITE AQUI" class="form-control"> </p>
+    <h3>QUAL É O SEU SEGMENTO?</h3>
+    <p><div class="form-row">
+    <select class="form-control col-md-4 mb-3">
         <option>Adega</option>
         <option>Outros</option>
     </select>    
-    <button id="btnEnviar" onclick="calcularAliquota()">Calcular Aliquota!</button>
+    <button type="button" class="btn btn-warning" id="btnEnviar" onclick="calcularAliquota()">CALCULAR SEU CREDITO!</button></p>
+</div>
     <h3 id="resultado"></h3>
+</form>
 </body>
 </html>
