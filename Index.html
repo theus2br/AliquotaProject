@@ -18,9 +18,17 @@
     <input type="text" id="valorMensal" placeholder="DIGITE AQUI" class="form-control"> </p>
     <h3>QUAL É O SEU SEGMENTO?</h3>
     <p><div class="form-row">
-    <select class="form-control col-md-4 mb-3">
-        <option>Adega</option>
-        <option>Outros</option>
+    <select class="form-control col-md-4 mb-3" id="tipoEstabelecimento">
+        <option value="0.70">Adega</option>
+        <option value="0.80">Autopeças</option>
+        <option value="0.25">Bares/Restaurantes</option>
+        <option value="0.50">Casa de show</option>
+        <option value="0.90">Centro automotivo</option>
+        <option value="0.90">Farmacias</option>
+        <option value="0.70"> Loja de conveniencia</option>
+        <option value="0.10">Mercados/Mercearias</option>
+        <option value="0.85">Perfumaria</option>
+        <option value="0.30">Petshop</option>
     </select>    
     <button type="button" class="btn btn-warning" id="btnEnviar" onclick="calcularAliquota()">CALCULAR SEU CREDITO!</button></p>
 </div>
