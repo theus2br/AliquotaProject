@@ -48,30 +48,27 @@ function calcularAliquota(){
     else if (valorAnual > 180000 && valorAnual <= 360000){
         calculo = (valorAnual * AliquotaFaixa2) - valorDeduzirFaixa2;
         calculo = (((calculo * porcentagemCategoria) * pisFaixa2) + ((calculo * porcentagemCategoria) * cofinsFaixa2)) * 60;
-        div.innerText = calculo;
     }
     else if (valorAnual > 360000 && valorAnual <= 720000){
         calculo = (valorAnual * AliquotaFaixa3) - valorDeduzirFaixa3;
         calculo = (((calculo * porcentagemCategoria) * pisFaixa3) + ((calculo * porcentagemCategoria) * cofinsFaixa3)) * 60;
-        div.innerText = calculo;
     }
     else if (valorAnual > 720000 && valorAnual <= 1800000){
         calculo = (valorAnual * AliquotaFaixa4) - valorDeduzirFaixa4;
         calculo = (((calculo * porcentagemCategoria) * pisFaixa4) + ((calculo * porcentagemCategoria) * cofinsFaixa4)) * 60;
-        div.innerText = calculo;
     }
     else if (valorAnual > 1800000 && valorAnual < 3600000){
         calculo = (valorAnual * AliquotaFaixa5) - valorDeduzirFaixa5;
         calculo = (((calculo * porcentagemCategoria) * pisFaixa5) + ((calculo * porcentagemCategoria) * cofinsFaixa5)) * 60;
-        div.innerText = calculo;
     }
     else if (valorAnual > 3600000 && valorAnual < 4800000){
         calculo = (valorAnual * AliquotaFaixa6) - valorDeduzirFaixa6;
         calculo = (((calculo * porcentagemCategoria) * pisFaixa6) + ((calculo * porcentagemCategoria) * cofinsFaixa6)) * 60;
-        div.innerText = calculo;
     }else{
         alert("Valor Invalido! Por favor insira outro valor")
     }
+    div.innerText = "CRÉDITO APURADO R$ " + Math.round(calculo) + ",00";
+
     $('#myModal').on('shown.bs.modal', function () {
         $('#myInput').trigger('focus')
     })
