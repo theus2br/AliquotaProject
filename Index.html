@@ -16,24 +16,12 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
-    <style>
-        #btnEnviar {
-            margin-left: 50px;
-        }
-        img{
-            align-content: center;
-            width: 150px;
-            margin-left: 145px;
-        }
-        #resultado{
-            color: rgb(37,204,2);
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
 
-    <form class="mx-auto" style="width: 600px;">
+    <form class="mx-auto" style="width: 600px; margin-top: 15%;">
         <p>
             <h3>INFORME SEU FATURAMENTO MENSAL?</h3>
             <input type="text" id="valorMensal" placeholder="DIGITE AQUI" class="form-control">
@@ -68,7 +56,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
+                    <div class="modal-body" id="modalBody">
                         <img src="icone.png" alt="Minha Figura">
                         <h3 id="resultado"></h3>
                         <p>OS VALORES SÃO ESTIMADOS COM BASE NO SEGMENTO DE ATUAÇÃO E FATURAMENTO, O VALOR REAL SERÁ

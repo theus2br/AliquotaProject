@@ -1,0 +1,30 @@
+#btnEnviar {
+    margin-left: 50px;
+}
+img{
+    align-content: center;
+    width: 150px;
+    margin-top: -30px;
+}
+#resultado{
+    color: rgb(37,204,2);
+}
+#btnEnviar{
+    color: white;
+}
+#valorMensal{
+    background-color: rgb(236,236,236);
+    width: 500px;
+}
+#tipoEstabelecimento{
+    background-color: rgb(236,236,236);
+}
+#modalBody{
+    text-align: center;
+}
+#modalBody p{
+    font-size: 13px;
+}
+.modal-header {
+    border-bottom: 0 none;  
+}
