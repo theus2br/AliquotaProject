@@ -72,6 +72,11 @@ function calcularAliquota(){
     }else{
         alert("Valor Invalido! Por favor insira outro valor")
     }
+    $('#myModal').on('shown.bs.modal', function () {
+        $('#myInput').trigger('focus')
+    })
     }
+
+    
 
     
