@@ -1,20 +1,86 @@
 <html>
-    <head>
+
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script type="text/javascript" src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <style>
+        #btnEnviar {
+            margin-left: 50px;
+        }
+        img{
+            align-content: center;
+            width: 150px;
+            margin-left: 145px;
+        }
+        #resultado{
+            color: rgb(37,204,2);
+        }
+    </style>
 </head>
+
 <body>
-    <h1>INFORME SEU FATURAMENTO MENSAL?</h1>
-    <input type="text" id="valorMensal" placeholder="DIGITE AQUI">
-    <h1>QUAL É O SEU SEGMENTO?</h1>
-    <select>
-        <option>Adega</option>
-        <option>Outros</option>
-    </select>    
-    <button id="btnEnviar" onclick="calcularAliquota()">Calcular Aliquota!</button>
-    <h3 id="resultado"></h3>
+
+    <form class="mx-auto" style="width: 600px;">
+        <p>
+            <h3>INFORME SEU FATURAMENTO MENSAL?</h3>
+            <input type="text" id="valorMensal" placeholder="DIGITE AQUI" class="form-control">
+        </p>
+        <h3>QUAL É O SEU SEGMENTO?</h3>
+        <p>
+            <div class="form-row">
+                <select class="form-control col-md-4 mb-3" id="tipoEstabelecimento">
+                    <option value="0.70">Adega</option>
+                    <option value="0.80">Autopeças</option>
+                    <option value="0.25">Bares/Restaurantes</option>
+                    <option value="0.50">Casa de show</option>
+                    <option value="0.90">Centro automotivo</option>
+                    <option value="0.90">Farmacias</option>
+                    <option value="0.70"> Loja de conveniencia</option>
+                    <option value="0.10">Mercados/Mercearias</option>
+                    <option value="0.85">Perfumaria</option>
+                    <option value="0.30">Petshop</option>
+                </select>
+                <button type="button" class="btn btn-warning" id="btnEnviar" onclick="calcularAliquota()"
+                    data-toggle="modal" data-target="#exampleModalCenter">CALCULAR SEU
+                    CREDITO!</button>
+        </p>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content justify-content-center">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="icone.png" alt="Minha Figura">
+                        <h3 id="resultado"></h3>
+                        <p>OS VALORES SÃO ESTIMADOS COM BASE NO SEGMENTO DE ATUAÇÃO E FATURAMENTO, O VALOR REAL SERÁ
+                            APURADO APÓS O FECHAMENTO DO CONTRATO COM
+                            OS DADOS ORIGINAIS DA EMPRESA.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
 </body>
+
 </html>
