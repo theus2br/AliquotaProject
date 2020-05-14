@@ -95,7 +95,7 @@ function calcularAliquota(){
         divCalculoShow.innerText += "\n Credito Apurado: " + Math.round(calculo2);
         div.innerText = calculo2;
     }else{
-        alert("Valor Invalido! Por favor insira outro valor")
+        alert("Valor Invalido! O valor está acima dos valores definidos")
     }
     div.innerText = "CRÉDITO APURADO R$ " + Math.round(calculo2) + ",00";
 
