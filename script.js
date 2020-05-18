@@ -7,6 +7,11 @@ function calcularAliquota(){
     var porcentagemCategoria = e.options[e.selectedIndex].value;
     var calculo;
     var calculo2;
+    var tributado;
+    var monofasico;
+    var monofasicoFinal;
+    var aux;
+   
 
     //Aliquota em %
     var AliquotaFaixa1 = 0.04;
@@ -79,11 +84,27 @@ function calcularAliquota(){
         div.innerText = calculo2;
     }
     else if (valorAnual > 1800000 && valorAnual < 3600000){
-        calculo = (valorAnual * AliquotaFaixa5) - valorDeduzirFaixa5;
-        divCalculoShow.innerHTML = "Valor anual: " + valorAnual + " * " + AliquotaFaixa5 + " - " + valorDeduzirFaixa5 + " = " + calculo + "\n";
-        calculo2 = (((calculo * porcentagemCategoria) * pisFaixa5) + ((calculo * porcentagemCategoria) * cofinsFaixa5)) * 60;
+        calculo = ((valorAnual * AliquotaFaixa5) - valorDeduzirFaixa5)/valorAnual;
+        divCalculoShow.innerHTML = "ALÍQUOTA EFETIVA: " + valorAnual + " * " + AliquotaFaixa5 + " - " + valorDeduzirFaixa5 + ")/" + valorAnual + " = " + parseFloat((100*calculo).toFixed(2)) + "\n";
+        calculo2 = valorMensal * calculo;
         divCalculoShow.innerHTML += '<br>';
-        divCalculoShow.innerHTML += "((" + Math.round(calculo) + " * " + porcentagemCategoria + ")" + " * " + pisFaixa5 + ") + ((" + Math.round(calculo) + " * " + porcentagemCategoria +")" + " * " + cofinsFaixa5 + ") * " + 60 + " = " +  Math.round(calculo2); 
+        divCalculoShow.innerHTML += " CÁLCULO DO SIMPLES NACIONAL: " + valorMensal + " * " + parseFloat((100*calculo).toFixed(2)) + " = " + calculo2 + "\n";        
+        aux = 1 - porcentagemCategoria;
+        tributado = (valorMensal * aux) * calculo; 
+        divCalculoShow.innerHTML += '<br>';
+        divCalculoShow.innerHTML += "BASE DE CALCULO 20% TRIBUTADO: " + valorMensal + " * " + parseFloat(aux).toFixed(2) + " = " + parseFloat(tributado).toFixed(2);  
+        divCalculoShow.innerHTML += '<br>';
+        monofasico = calculo - (calculo * (cofinsFaixa5 + pisFaixa5));
+        divCalculoShow.innerHTML += "\n % pro MONOFASICO: " + calculo + " - (" +  parseFloat((calculo*100).toFixed(3)) + " * (" + parseFloat((cofinsFaixa5*100).toFixed(3)) + " + " + parseFloat((pisFaixa5*100)).toFixed(3) + "))" + " = " + parseFloat((monofasico*100).toFixed(3));
+        
+        monofasicoFinal = (valorMensal * porcentagemCategoria) * monofasico;
+        divCalculoShow.innerHTML += "";
+        
+
+
+
+
+
         divCalculoShow.innerText += "\n Credito Apurado: " + Math.round(calculo2);
         div.innerText = calculo2;
     }
