@@ -1,0 +1,8 @@
+Esse faturamento não se enquadra no simples nacional
+
+
+Calcular com mais de 10000
+Revisar o valor do select que está errado
+
+Com base no valor informado sua empresa não se enquadra no simples nacional.+
+
