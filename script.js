@@ -1,4 +1,5 @@
 function calcularAliquota(){
+    debugger;
     var valorMensal =  parseInt(document.getElementById("valorMensal").value);
     var valorAnual = valorMensal * 12;
     var div = document.getElementById("resultado");   
@@ -10,6 +11,8 @@ function calcularAliquota(){
     var tributado;
     var monofasico;
     var monofasicoFinal;
+    var totalRecalculado;
+    var restituido;
     var aux;
    
 
@@ -84,29 +87,47 @@ function calcularAliquota(){
         div.innerText = calculo2;
     }
     else if (valorAnual > 1800000 && valorAnual < 3600000){
+        
+        //ALÍQUOTA EFETIVA 
         calculo = ((valorAnual * AliquotaFaixa5) - valorDeduzirFaixa5)/valorAnual;
-        divCalculoShow.innerHTML = "ALÍQUOTA EFETIVA: " + valorAnual + " * " + AliquotaFaixa5 + " - " + valorDeduzirFaixa5 + ")/" + valorAnual + " = " + parseFloat((100*calculo).toFixed(2)) + "\n";
+        divCalculoShow.innerHTML = "\n" + valorAnual + " * " + AliquotaFaixa5 + " - " + valorDeduzirFaixa5 + ")/" + valorAnual + " = " + parseFloat((100*calculo).toFixed(2)) + "\n";
+        
+        //CÁLCULO DO SIMPLES NACIONAL
         calculo2 = valorMensal * calculo;
         divCalculoShow.innerHTML += '<br>';
-        divCalculoShow.innerHTML += " CÁLCULO DO SIMPLES NACIONAL: " + valorMensal + " * " + parseFloat((100*calculo).toFixed(2)) + " = " + calculo2 + "\n";        
+        divCalculoShow.innerHTML += "" + valorMensal + " * " + parseFloat((100*calculo).toFixed(2)) + " = " + calculo2 + "\n";  
+        
+        //Seguimento - 100%
         aux = 1 - porcentagemCategoria;
+        aux = Math.round(aux, 2);
+
+        //BASE DE CALCULO (seguimento) TRIBUTADO
         tributado = (valorMensal * aux) * calculo; 
         divCalculoShow.innerHTML += '<br>';
-        divCalculoShow.innerHTML += "BASE DE CALCULO 20% TRIBUTADO: " + valorMensal + " * " + parseFloat(aux).toFixed(2) + " = " + parseFloat(tributado).toFixed(2);  
-        divCalculoShow.innerHTML += '<br>';
+        divCalculoShow.innerHTML += "(" + parseFloat(aux).toFixed(2) + "%): " + valorMensal + " * " + parseFloat(aux).toFixed(2) + " = " + parseFloat(tributado).toFixed(2);  
+
+        //Porcentagem do MONOFASICO
         monofasico = calculo - (calculo * (cofinsFaixa5 + pisFaixa5));
-        divCalculoShow.innerHTML += "\n % pro MONOFASICO: " + calculo + " - (" +  parseFloat((calculo*100).toFixed(3)) + " * (" + parseFloat((cofinsFaixa5*100).toFixed(3)) + " + " + parseFloat((pisFaixa5*100)).toFixed(3) + "))" + " = " + parseFloat((monofasico*100).toFixed(3));
+        divCalculoShow.innerHTML += '<br>';
+        divCalculoShow.innerHTML += calculo + " - (" +  parseFloat((calculo*100).toFixed(3)) + " * (" + parseFloat((cofinsFaixa5*100).toFixed(3)) + " + " + parseFloat((pisFaixa5*100)).toFixed(3) + "))" + " = " + parseFloat((monofasico*100).toFixed(3));
+        divCalculoShow.innerHTML += '<br>';
         
+
+        //BASE DE CALCULO 80% MONOFASICO
         monofasicoFinal = (valorMensal * porcentagemCategoria) * monofasico;
-        divCalculoShow.innerHTML += "";
+        divCalculoShow.innerHTML += "\n(" + porcentagemCategoria + "%) (" + valorMensal + " * " + porcentagemCategoria + ") * " + monofasico + " = " + monofasicoFinal;
         
+        //TOTAL RECALCULADO
+        totalRecalculado = tributado + monofasicoFinal;
+        divCalculoShow.innerHTML += tributado + " + " + monofasicoFinal + " = " + totalRecalculado;
 
+        //ECONOMIA MENSAL
+        economiaMensal = calculo2 - totalRecalculado;
+        divCalculoShow.innerHTML += calculo2 + " - " + totalRecalculado + " = " + economiaMensal;
 
-
-
-
-        divCalculoShow.innerText += "\n Credito Apurado: " + Math.round(calculo2);
-        div.innerText = calculo2;
+        //VALOR RESTITUIDO
+        restituido = economiaMensal * 60; 
+        div.innerText = restituido;
     }
     else if (valorAnual > 3600000 && valorAnual < 4800000){
         calculo = (valorAnual * AliquotaFaixa6) - valorDeduzirFaixa6;
