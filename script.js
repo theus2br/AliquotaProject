@@ -1,15 +1,20 @@
 function calcularAliquota() {
-
-    var valorMensal = parseInt(document.getElementById("valorMensal").value);
-    var valorAnual = valorMensal * 12;
+    debugger;
+    var valorMensal = valorMensalConvertido(document.getElementById("valorMensal").value);   
+    var valorAnual = valorMensal * parseFloat(12);
     var div = document.getElementById("resultado");
     var divCalculoEfetivaShow = document.getElementById("calculoShow");
     var e = document.getElementById("tipoEstabelecimento");
-    var porcentagemCategoria2 = e.options[e.selectedIndex].value;
-    var porcentagemCategoria = parseFloat(porcentagemCategoria2).toFixed(4);
+    var porcentagemCategoria = parseFloat(e.options[e.selectedIndex].value).toFixed(4);
 
-    debugger;
-    var faixaGeral;
+
+    function valorMensalConvertido(valorMensal){
+        
+        var f = document.forms[0]; 
+        valorMensal = parseFloat(f.valorMensal.value.replace('.','').replace(',','.')); 
+        return valorMensal;
+    }
+    
     var AliquotaFaixa = new Array();
     var pisFaixa = new Array();
     var valorDeduzirFaixa = new Array();
@@ -102,10 +107,18 @@ function calcularAliquota() {
     restituido = economiaMensal * 60;
     divCalculoEfetivaShow.innerHTML += '<br>';
     divCalculoEfetivaShow.innerHTML += "\n" + economiaMensal + " * 60 = " + restituido;
-    div.innerText = restituido;
+
+    function numberToReal(numero) {
+        var numero = numero.toFixed(2).split('.');
+        numero[0] = "R$ " + numero[0].split(/(?=(?:...)*$)/).join('.');
+        return numero.join(',');
+    }
+
+    div.innerText = numberToReal(restituido);
 
     if (i != 6) {
-        div.innerText = "CRÉDITO APURADO R$ " + Math.round(restituido) + ",00";
+        div.innerText = "CRÉDITO APURADO " + numberToReal(restituido);
+        div.innerText += "\nECONOMIA MENSAL " + numberToReal(economiaMensal);
         var img = document.getElementById('img');
         $(this).attr("src","denied.png");
     } else {
