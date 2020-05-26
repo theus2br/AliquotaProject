@@ -1,17 +1,22 @@
 function calcularAliquota() {
     debugger;
-    var valorMensal = valorMensalConvertido(document.getElementById("valorMensal").value);   
+    var valorMensal = valorMensalConvertido(document.getElementById("valorMensal").value);       
     var valorAnual = valorMensal * parseFloat(12);
     var div = document.getElementById("resultado");
     var divCalculoEfetivaShow = document.getElementById("calculoShow");
     var e = document.getElementById("tipoEstabelecimento");
     var porcentagemCategoria = parseFloat(e.options[e.selectedIndex].value).toFixed(4);
-
+    var img = document.getElementById('img');
 
     function valorMensalConvertido(valorMensal){
-        
         var f = document.forms[0]; 
-        valorMensal = parseFloat(f.valorMensal.value.replace('.','').replace(',','.')); 
+        
+        valorMensal = f.valorMensal.value.replace('.','').replace(',','.'); 
+        valorMensal = f.valorMensal.value.replace('.','').replace('.',''); 
+        valorMensal = f.valorMensal.value.replace('.','').replace('.','');
+        valorMensal = f.valorMensal.value.replace('.','').replace('.','');
+
+        valorMensal = parseFloat(valorMensal);
         return valorMensal;
     }
     
@@ -117,13 +122,15 @@ function calcularAliquota() {
     div.innerText = numberToReal(restituido);
 
     if (i != 6) {
-        div.innerText = "CRÉDITO APURADO " + numberToReal(restituido);
-        div.innerText += "\nECONOMIA MENSAL " + numberToReal(economiaMensal);
-        var img = document.getElementById('img');
-        $(this).attr("src","denied.png");
+        div.innerHTML = "<div style='color:rgb(37,204,2);' font-size='25px'> CRÉDITO APURADO " + numberToReal(restituido) + "</div>";
+        div.innerHTML += "\n <div style='color:rgb(37,204,2);' font-size='25px'>ECONOMIA MENSAL " + numberToReal(economiaMensal)  + "</div>";
+        img.src = 'icone.png';
+     
     } else {
-        div.innerText = "Com base no valor informado sua empresa não se enquadra no simples nacional.";
+        img.src = 'x.png';
+        div.innerHTML = "<div style='color:#FF0000;'> Com base no valor informado sua empresa não se enquadra no simples nacional. </div>";
         document.getElementById("resultado").style.color =rgb(237,28,36);
+        
     }
     $('#myModal').on('shown.bs.modal', function () {
         $('#myInput').trigger('focus')
