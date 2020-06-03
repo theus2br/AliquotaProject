@@ -122,8 +122,8 @@ function calcularAliquota() {
     div.innerText = numberToReal(restituido);
 
     if (i != 6) {
-        div.innerHTML = "<div style='color:rgb(37,204,2);' font-size='25px'> CRÉDITO APURADO " + numberToReal(restituido) + "</div>";
-        div.innerHTML += "\n <div style='color:rgb(37,204,2);' font-size='25px'>ECONOMIA MENSAL " + numberToReal(economiaMensal)  + "</div>";
+        div.innerHTML = "<p style='color:rgb(37,204,2); font-size:23px;'> VALOR A SER RESTITUIDO " + numberToReal(restituido) + "</p>";
+        div.innerHTML += "\n <p style='color:rgb(37,204,2); font-size:23px;'>ECONOMIA MENSAL " + numberToReal(economiaMensal)  + "</p>";
         img.src = 'icone.png';
      
     } else {
